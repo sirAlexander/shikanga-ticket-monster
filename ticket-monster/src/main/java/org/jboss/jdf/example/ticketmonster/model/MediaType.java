@@ -1,5 +1,6 @@
 package org.jboss.jdf.example.ticketmonster.model;
 
+import org.jboss.errai.common.client.api.annotations.Portable;
 
 /**
  * <p>
@@ -18,29 +19,41 @@ package org.jboss.jdf.example.ticketmonster.model;
  * connection. For example images and or an mpeg video file can be cached, whilst a video streamed across the internet cannot.
  * </p>
  * 
- * 
+ * @author Pete Muir
  * 
  */
+@Portable
 public enum MediaType {
-	
-	/**
+
+    /**
      * The types of media the application can currently handle. Right now, it can only handle images. We plan to add support for
      * streamed videos in the next development round.
      */
-    IMAGE("Image");
+    IMAGE("Image", true);
     
     /**
      * A human readable description of the media type.
      */
     private final String description;
     
-    private MediaType(String description){
-    	this.description = description;
+    /**
+     * A boolean flag indicating whether the media type can be cached.
+     */
+    private final boolean cacheable;
+    
+    /* Boilerplate constructor and getters */
+
+    private MediaType(String description, boolean cacheable) {
+        this.description = description;
+        this.cacheable = cacheable;
     }
 
-	public String getDescription() {
-		return description;
-	}
-    
-    
+    public String getDescription() {
+        return description;
+    }
+
+    public boolean isCacheable() {
+        return cacheable;
+    }
+
 }
