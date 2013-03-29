@@ -1,4 +1,4 @@
-package org.jboss.jdf.example.ticketmonster.test;
+package org.jboss.jdf.ticketmonster.test;
 
 import static org.junit.Assert.assertNotNull;
 
